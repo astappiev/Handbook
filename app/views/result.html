@@ -1,0 +1,8 @@
+<div class="units-row">
+    <ng-pluralize ng-show="searched" count="results.length" when="{ 0: 'Ничего не найдено', one: 'Найден один результат', few: 'Найдено: {} результата', many: 'Найдено: {} результатов',  other: 'Найдено: {} результатов' }"></ng-pluralize>
+</div>
+<div class="units-row">
+    <div ng-repeat="result in results">
+        <div ng-include="'views/type/' + result.type + '.html'"></div>
+    </div>
+</div>

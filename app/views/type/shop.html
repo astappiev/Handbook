@@ -1,0 +1,16 @@
+<p class="location"><a href="{{ '/s:' + result.json.alias }}">#</a></p>
+<section class="units-row card shop">
+    <h2>{{result.json.name}}</h2>
+    <hr/>
+
+    <img ng-src="{{result.json.logo_url}}" align="right" />
+    <p>{{ result.json.about }}</p>
+    <dl>
+        <dt>Метро</dt>
+        <dd>/go {{ result.json.subway }}</dd>
+
+        <dt>Координаты</dt>
+        <dd>{{ result.json.x_cord }}; {{ result.json.z_cord }}</dd>
+    </dl>
+
+</section>

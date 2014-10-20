@@ -1,0 +1,31 @@
+<p class="location"><a href="{{ '/p:' + result.json.id }}">#</a></p>
+<section class="units-row card price">
+    <h2>{{result.json.name}}</h2>
+    <hr/>
+    <div class="units-row end">
+        <img ng-src="{{ result.json.image_url }}" align="right" />
+        <p><b>ID:</b> {{ result.json.id }}</p>
+        <p>{{ result.json.description }}</p>
+    </div>
+    <hr/>
+    <table class="table-hovered">
+        <thead>
+            <tr>
+                <th colspan="2" class="width-50">Магазин</th>
+                <th>Продажа</th>
+                <th>Покупка</th>
+                <th>Кол-во</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="shop in result.json.in_shop">
+            <tr>
+                <td><img ng-src="{{ shop.shop.logo_url }}" /></td>
+                <td class="name"><a href="{{ shop.shop.shop_url || '#' }}" target="_blank">{{ shop.shop.name }}</a></td>
+                <td>{{ shop.price_sell || '—'}}</td>
+                <td>{{ shop.price_buy || '—' }}</td>
+                <td>{{ shop.stuck }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>

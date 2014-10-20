@@ -1,0 +1,44 @@
+<p class="location"><a href="{{ '/r:' + result.json.name.toLocaleLowerCase() }}">#</a></p>
+<section class="units-row card region">
+    <h2>{{ result.json.name }}</h2>
+    <hr/>
+    <div class="units-row end">
+        <p ng-show="result.json.parent">Родительский регион: <span><a href="{{ result.json.parent }}">{{ result.json.parent }}</a></span><br/></p>
+
+        <nav class="navbar" ng-init="tabs = 2">
+            <ul>
+                <li ng-class="{'active' : tabs == 0}" ng-click="tabs = 0"><a href="#">Координаты</a></li>
+                <li ng-class="{'active' : tabs == 1}" ng-click="tabs = 1"><a href="#">Размеры</a></li>
+                <li ng-class="{'active' : tabs == 2}" ng-click="tabs = 2"><a href="#">Характеристики</a></li>
+                <li ng-class="{'active' : tabs == 3}" ng-click="tabs = 3"><a href="#">Игроки</a></li>
+                <li ng-class="{'active' : tabs == 4}" ng-click="tabs = 4"><a href="#">Флаги</a></li>
+            </ul>
+        </nav>
+
+        <blockquote ng-show="tabs == 0">
+            <p>{{ result.json.coordinates.first[0] + ' ' + result.json.coordinates.first[1] + ' ' + result.json.coordinates.first[2] }}</p>
+            <p>{{ result.json.coordinates.second[0] + ' ' + result.json.coordinates.second[1] + ' ' + result.json.coordinates.second[2] }}</p>
+        </blockquote>
+        <blockquote ng-show="tabs == 1">
+            <p>Ширина по X: {{ result.json.coordinates.x }}</p>
+            <p>Ширина по Z: {{ result.json.coordinates.z }}</p>
+            <p>Высота: {{ result.json.coordinates.y }}</p>
+        </blockquote>
+        <blockquote ng-show="tabs == 2">
+            <p>Площадь: {{ result.json.coordinates.x * result.json.coordinates.z | number }}</p>
+            <p>Объем: {{ result.json.coordinates.x * result.json.coordinates.y * result.json.coordinates.z | number }}</p>
+            <p>Базовая стоимость: {{ (cost = Math.round(result.json.coordinates.x * result.json.coordinates.z * 10 + (result.json.coordinates.x * result.json.coordinates.y * result.json.coordinates.z * 10) / 256)) > 500 ? cost : 500 | number }} зелени</p>
+        </blockquote>
+        <blockquote ng-show="tabs == 3">
+            <p ng-show="result.json.full_access.length">Владельцы региона</p>
+            <p ng-show="result.json.full_access.length" class="inline-list"><span ng-repeat="user in result.json.full_access"><a href="{{user}}">{{user}}</a></span></p>
+
+            <p ng-show="result.json.build_access.length">Могут строить</p>
+            <p ng-show="result.json.build_access.length" class="inline-list"> <span ng-repeat="user in result.json.build_access"><a href="{{user}}">{{user}}</a></span></p>
+        </blockquote>
+        <blockquote ng-show="tabs == 4">
+            <p ng-hide="isEmpty(result.json.flags)" class="inline-list"><span ng-repeat="(flag, value) in result.json.flags">{{flag}}: {{value}}</span></p>
+        </blockquote>
+    </div>
+    <map id="map" class="map"></map>
+</section>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="handbook" lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>GreenCubes Handbook</title>
+    <meta name="description" content="Универсальный поиск информации из мира GreenCubes">
+    <meta name="viewport" content="width=device-width">
+    <base href="/" />
+	<link href="/favicon.png" rel="icon" type="image/png">
+	<link href="/favicon.png" rel="apple-touch-icon" type="image/png">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/kube/css/kube.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-controller="Search">
+    <div class="units-row end">
+        <div class="unit-centered wrapper">
+            <header class="units-row units-split">
+                <div class="left">
+                    <a href="/"><img src="/favicon.png"></a>
+                </div>
+                <div class="right text-right clearfix">
+                    <h1><span class="green">Green</span>Cubes Handbook</h1>
+                    <nav class="navbar navbar-right">
+                        <ul>
+                            <li><a href="!top">Топ 50</a></li>
+                            <li><a href="!help">Помощь</a></li>
+                            <li><a href="!about">О проекте</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="units-row end search">
+                <form class="forms end" ng-submit="search()">
+                    <div class="input-groups">
+                        <input type="text" name="go" placeholder="Логин игрока, название региона, id предмета, ..." ng-model="query"/>
+                        <span class="btn-append">
+                            <button class="btn">Поиск</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+            <div ng-view></div>
+
+        </div>
+    </div>
+
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-48545761-2', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+	<!-- build:js(.) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/leaflet/dist/leaflet.js"></script>
+	<script src="bower_components/angular-locale-ru/angular-locale_ru.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/pagecontroller.js"></script>
+	<script src="scripts/controllers/resultcontroller.js"></script>
+	<script src="scripts/controllers/searchcontroller.js"></script>
+	<script src="scripts/directives/mapdirective.js"></script>
+	<script src="scripts/directives/prefixdirective.js"></script>
+	<script src="scripts/directives/skindirective.js"></script>
+	<script src="scripts/filters/lastseenfilter.js"></script>
+	<script src="scripts/filters/yearsfilter.js"></script>
+	<!-- endbuild -->
+</body>
+</html>

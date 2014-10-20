@@ -1,0 +1,11 @@
+<p class="location"><a href="/!online">#</a></p>
+<section class="nits-row card online">
+    <h2>Игроки онлайн</h2>
+    <hr/>
+    <p class="end"><ng-pluralize ng-show="result.json" count="result.json.length" when="{ 0: 'Никого нет. Зайди и будешь первым!', one: 'На сервере {} игрок.', few: 'На сервере: {} игрока.', many: 'На сервере: {} игроков.', other: 'На сервере: {} игроков.' }"></ng-pluralize></p>
+    <div class="units-row end">
+        <ul class="list-flat end">
+            <li ng-repeat="user in result.json"><a href="{{user}}">{{user}}</a></li>
+        </ul>
+    </div>
+</section>

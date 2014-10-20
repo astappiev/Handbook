@@ -1,0 +1,30 @@
+<p class="location"><a href="{{ ((result.json.y === 128 && result.json.x === 5 && result.json.z === 5) ? '/!calc' : '/=' + ((result.json.y === 128 && result.json.x === result.json.z) ? result.json.x : ((result.json.y === 128) ? result.json.x + '*' + result.json.z : result.json.x + '*' + result.json.y + '*' + result.json.z))) }}">#</a></p>
+<section class="units-row card calc">
+    <h2>Калькулятор регионов</h2>
+	<hr/>
+	<ul class="forms-inline-list">
+		<li>
+			X: <input type="number" ng-model="result.json.x" min = "1" max="999999" />
+		</li>
+		<li>
+			Y: <input type="number" ng-model="result.json.y" min = "1" max="128" />
+		</li>
+		<li>
+			Z: <input type="number" ng-model="result.json.z" min = "1" max="999999" />
+		</li>
+        <div class="forms-desc">Введите необходимые размеры региона для подсчета</div>
+	</ul>
+	<div class="tools-alert tools-alert-yellow" ng-show="result.json.x < 5 || result.json.y < 5 || result.json.z < 5">
+		Регион не может быть меньше <samp>5х5х5</samp>.
+	</div>
+	<dl>
+		<dt>Площадь</dt>
+		<dd>{{ (result.json.x * result.json.z || 0) | number }} блоков<sup>2</sup></dd>
+		<dt>Объем</dt>
+		<dd>{{ (result.json.x * result.json.y * result.json.z || 0) | number }} блоков<sup>3</sup></dd>
+		<dt>Базовая стоимость</dt>
+		<dd>{{ (cost = Math.round(result.json.x * result.json.z * 10 + (result.json.x * result.json.y * result.json.z * 10) / 256)) > 500 ? cost : 500 | number }} зелени</dd>
+	</dl>
+	<p>Для более быстрого подсчета стоимости, объема и площади регионов, вы можете использовать уравнение в поисковой строке, например <code>=50*60*40</code> произведет расчет для региона размером <samp>50х60х40</samp>.</p>
+	<p>Используя два параметра, например <code>=50*40</code> будем считать что наш регион имеет максимальную высоту, а используя один параметр еще и квадратный.</p>
+</section>

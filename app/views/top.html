@@ -1,0 +1,12 @@
+<div class="units-row"></div>
+<section class="units-row card page">
+    <h2>Топ 50</h2>
+    <dl>
+        <dt>Топ 50 саммых распостраненых запросов в Handbook за прошедние 30 дней.</dt>
+        <dd>
+            <ul class="list-flat" ng-init="getTop()">
+                <li ng-repeat="result in results"><a href="{{result.page}}">{{result.page}}</a> - {{result.views}}</li>
+            </ul>
+        </dd>
+    </dl>
+</section>
