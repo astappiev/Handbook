@@ -1,9 +1,9 @@
 <p class="location"><a href="{{ '/u:' + result.json.username.toLocaleLowerCase() }}">#</a></p>
 <section class="units-row card user">
     <div class="left">
-        <h2 ng-style="{ 'color' : '#{{ result.json.nick_color.slice(-6) }}' }">
+        <h2>
             <prefix></prefix>
-            <span>{{result.json.username}}</span>
+            <span ng-style="{ 'color' : '#{{ result.json.nick_color.slice(-6) }}' }">{{result.json.username}}</span>
         </h2>
         <hr/>
         <dl>

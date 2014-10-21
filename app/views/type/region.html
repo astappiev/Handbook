@@ -11,7 +11,7 @@
                 <li ng-class="{'active' : tabs == 1}" ng-click="tabs = 1"><a href="#">Размеры</a></li>
                 <li ng-class="{'active' : tabs == 2}" ng-click="tabs = 2"><a href="#">Характеристики</a></li>
                 <li ng-class="{'active' : tabs == 3}" ng-click="tabs = 3"><a href="#">Игроки</a></li>
-                <li ng-class="{'active' : tabs == 4}" ng-click="tabs = 4"><a href="#">Флаги</a></li>
+                <li ng-hide="isEmpty(result.json.flags)" ng-class="{'active' : tabs == 4}" ng-click="tabs = 4"><a href="#">Флаги</a></li>
             </ul>
         </nav>
 
@@ -31,10 +31,10 @@
         </blockquote>
         <blockquote ng-show="tabs == 3">
             <p ng-show="result.json.full_access.length">Владельцы региона</p>
-            <p ng-show="result.json.full_access.length" class="inline-list"><span ng-repeat="user in result.json.full_access"><a href="{{user}}">{{user}}</a></span></p>
+            <p ng-show="result.json.full_access.length" class="inline-list"><span ng-repeat="user in result.json.full_access"><a href="{{ '/' + (user.charAt(1) !== ':' ? 'u:' : '') + user.toLocaleLowerCase() }}">{{user}}</a></span></p>
 
             <p ng-show="result.json.build_access.length">Могут строить</p>
-            <p ng-show="result.json.build_access.length" class="inline-list"> <span ng-repeat="user in result.json.build_access"><a href="{{user}}">{{user}}</a></span></p>
+            <p ng-show="result.json.build_access.length" class="inline-list"><span ng-repeat="user in result.json.build_access"><a href="{{ '/' + (user.charAt(1) !== ':' ? 'u:' : '') + user.toLocaleLowerCase() }}">{{user}}</a></span></p>
         </blockquote>
         <blockquote ng-show="tabs == 4">
             <p ng-hide="isEmpty(result.json.flags)" class="inline-list"><span ng-repeat="(flag, value) in result.json.flags">{{flag}}: {{value}}</span></p>

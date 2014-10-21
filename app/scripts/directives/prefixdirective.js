@@ -63,6 +63,9 @@ angular.module('handbook')
                     case 'e':
                         color = 'FFFF55';
                         break;
+                    case 'f':
+                        color = 'fff';
+                        break;
                     default:
                         color = false;
                         break;
