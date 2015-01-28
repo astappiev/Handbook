@@ -5,19 +5,18 @@
  * @name handbook.controller:Page
  * @description
  * # Pagecontroller
- * Controller of the handbookApp
+ * Controller of the handbook
  */
 angular.module('handbook')
-    .controller('Page', function ($scope, $http) {
+    .controller('Page', function ($scope, $log, yqlService) {
         $scope.$parent.query = '';
 
-        $scope.getTop = function() {
-            $http.get('http://ga.gctrade.ru/handbook.php')
-                .success(function (data) {
-                    $scope.results = data;
-                })
-                .error(function(data, status) {
-                    console.log(data, status);
-                });
-        };
+        yqlService.getAnalytics().then(
+            function(top) {
+                $scope.results = top.data;
+            },
+            function() {
+                $log.error('Топ50 не загружен');
+            }
+        );
     });

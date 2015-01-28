@@ -6,7 +6,7 @@
  * @function
  * @description
  * # yearsFilter
- * Filter in the handbookApp.
+ * Filter in the handbook
  */
 angular.module('handbook')
     .filter('years', function () {

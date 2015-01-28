@@ -4,13 +4,14 @@
  * @ngdoc overview
  * @name handbook
  * @description
- * # handbookApp
+ * # handbook
  *
  * Main module of the application.
  */
 angular
     .module('handbook', [
-        'ngRoute'
+        'ngRoute',
+        'ngSanitize'
     ])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider

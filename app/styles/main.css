@@ -1,5 +1,5 @@
 .scratch {
-    display:none;
+    display: none;
 }
 body {
     background: #C8E9C6;
@@ -10,6 +10,17 @@ h1 {
 h2 {
     font-size: 28px;
 }
+.wrapper {
+    max-width: 650px;
+    padding: 10px;
+}
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both
+}
+
 .green {
     color: green;
 }
@@ -22,6 +33,7 @@ h2 {
 .apocalyptic {
     color: #FFBF40;
 }
+
 .input-groups .btn-append, .input-groups .input-append, .input-groups .input-prepend {
     width: 1%;
     vertical-align: middle;
@@ -44,52 +56,104 @@ h2 {
     border-color: #BBBCC0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
 }
+
 .card {
     padding: 1.5rem;
     box-shadow: 0 1px 2px #aaa;
     background: #fff;
     margin-bottom: 1rem;
     border-radius: 3px;
+    background-size: cover;
+    background-position: center;
 }
 .card.user {
     background-color: rgba(191, 229, 140, 0.9);
 }
+.card.user h2 {
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    color: #FFF;
+}
 .card.page {
     background-color: rgba(197, 217, 233, 0.9);;
 }
-.map {
+.card.news a{
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.card.news .tweet-msg a{
+    color: #4A913C;
+    font-weight: normal;
+}
+.card.news .tweet-text {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #999;
+    border-radius: 0 10px;
+    padding: 10px;
+}
+.card.calc .forms-inline-list li {
+    width: 30%;
+}
+.card.calc .forms-inline-list li input{
+    width: 80%;
+}
+.card.region blockquote {
+    font-style: normal;
+    margin-left: 0;
+}
+.card.region blockquote p {
+    margin-bottom: 0;
+}
+.card.region .map {
     height: 13rem;
     margin: .5rem -1.5rem 0.5rem -1.5rem;
 }
-.wrapper {
-    max-width: 650px;
-    padding: 10px;
+.card.shop img {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.card.price table img {
+    width: 64px;
+    margin: -6px;
+}
+.card.price table td:not(.name) {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.location {
+    position: absolute;
+    width: 24px;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 3px 12px 0 12px;
+    margin: 60px 0 0 -8px;
+    background-color: #999;
+    text-shadow: 0 1px 2px #BBB;
+    -webkit-box-shadow: 0 2px 4px #888;
+    -moz-box-shadow: 0 2px 4px #888;
+    box-shadow: 0 2px 4px #888;
+}
+.location:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 100%;
+    border-width: 4px 4px;
+    border-style: solid;
+    border-color: #666 #666 transparent transparent;
+}
+.location a {
+    color: #555;
+    text-decoration: none;
+}
+
 .inline-list > *::after {
     content: ', ';
 }
 .inline-list > *:last-child::after {
     content: '';
-}
-
-.calc .forms-inline-list li {
-	width: 30%;
-}
-
-.calc .forms-inline-list li input{
-	width: 80%;
-}
-
-.user h2 {
-	text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
-    color: #FFF;
-}
-
-.clearfix:after {
-    content: " ";
-    display: block;
-    height: 0;
-    clear: both
 }
 
 @media only screen and (max-width: 767px) {
@@ -122,57 +186,4 @@ h2 {
         text-align: center;
     }
     header .navbar ul li, header .navbar ul li a { display: inline; }
-}
-
-.location {
-    position: absolute;
-    width: 24px;
-    font-size: 0.8em;
-    font-weight: bold;
-    padding: 3px 12px 0 12px;
-    margin: 60px 0 0 -8px;
-    background-color: #999;
-    text-shadow: 0 1px 2px #BBB;
-    -webkit-box-shadow: 0px 2px 4px #888;
-    -moz-box-shadow: 0px 2px 4px #888;
-    box-shadow: 0 2px 4px #888;
-}
-
-.location:after {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 0;
-    top: 100%;
-    border-width: 4px 4px;
-    border-style: solid;
-    border-color: #666 #666 transparent transparent;
-}
-
-.location a {
-    color: #555;
-    text-decoration: none;
-}
-
-.card.region blockquote {
-    font-style: normal;
-    margin-left: 0;
-}
-
-.card.region blockquote p {
-    margin-bottom: 0;
-}
-
-.card.shop img {
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.card.price table img {
-    width: 64px;
-    margin: -6px;
-}
-.card.price table td:not(.name) {
-    text-align: center;
-    vertical-align: middle;
 }

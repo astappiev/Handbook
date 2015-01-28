@@ -1,0 +1,7 @@
+<p class="location"><a href="{{ 'https://twitter.com/statuses/' + result.json.id }}" target="_blank">#</a></p>
+<section class="units-row card news" ng-style="{'background-image' : 'url('+ (result.json.retweeted_status.user.profile_banner_url || result.json.user.profile_banner_url || 'https://greencubes.org/templates/template/img/botsakura.png') + ')'}">
+    <div class="units-row end tweet-text">
+        <p class="end"><a target="_blank" href="https://twitter.com/{{ (result.json.retweeted_status.user.screen_name || result.json.user.screen_name) }}">{{ (result.json.retweeted_status.user.name || result.json.user.name) }}</a> — <em>{{ (result.json.retweeted_status.created_at || result.json.created_at) | time }}</em><span ng-show="result.json.retweeted_status">, поделился(ась) <a target="_blank" href="https://twitter.com/{{ result.json.user.screen_name }}">{{result.json.user.name}}</a></span></p>
+        <p ng-bind-html="(result.json.retweeted_status.text || result.json.text) | tweet" class="tweet-msg end"></p>
+    </div>
+</section>

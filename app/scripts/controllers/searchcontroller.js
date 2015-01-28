@@ -5,7 +5,7 @@
  * @name handbook.controller:Search
  * @description
  * # SearchСontroller
- * Controller of the handbookApp
+ * Controller of the handbook
  */
 angular.module('handbook')
     .controller('Search', function ($scope, $location) {

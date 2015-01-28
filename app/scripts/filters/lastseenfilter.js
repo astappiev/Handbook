@@ -6,7 +6,7 @@
  * @function
  * @description
  * # lastseenFilter
- * Filter in the handbookApp.
+ * Filter in the handbook
  */
 angular.module('handbook')
     .filter('lastseen', function ($filter) {
