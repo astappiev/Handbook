@@ -59,7 +59,7 @@ angular.module('handbook')
                                 for(var i = 0; i < count; ++i) {
                                     $scope.results.push({json: price.data[i], type: 'price'});
                                 }
-                            } else {
+                            } else if (price.data) {
                                 $scope.results.push({ json: price.data, type: 'price' });
                             }
                         },
