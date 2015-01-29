@@ -8,23 +8,23 @@
         <hr/>
         <dl>
             <dt>Зарегистрирован</dt>
-            <dd>{{result.json.reg_date * 1000 | date:'medium'}} ({{result.json.reg_date * 1000 | years}} GCлет)</dd>
+            <dd>{{result.json.reg_date * 1000 | date:'medium'}} ({{result.json.reg_date | years}} GCлет)</dd>
 
             <dt>Последний онлайн</dt>
             <dd>
                 На сервере <b class="main">Main</b>:
                 <i ng-show="result.json.status.main">онлайн</i>
-                <abbr ng-hide="result.json.status.main" ng-init="isHoverMain = false" ng-mouseleave="isHoverMain = false" ng-mouseover="isHoverMain = true" title="">{{result.json.lastseen.main * 1000 | lastseen:isHoverMain}}</abbr>;
+                <abbr ng-hide="result.json.status.main" ng-init="isHoverMain = false" ng-mouseleave="isHoverMain = false" ng-mouseover="isHoverMain = true" title="">{{result.json.lastseen.main | lastseen:isHoverMain}}</abbr>;
             </dd>
             <dd>
                 На сервере <b class="rpg">RPG</b>:
                 <i ng-show="result.json.status.rpg">онлайн</i>
-                <abbr ng-hide="result.json.status.rpg" ng-init="isHoverRpg = false" ng-mouseleave="isHoverRpg = false" ng-mouseover="isHoverRpg = true" title="">{{result.json.lastseen.rpg * 1000 | lastseen:isHoverRpg}}</abbr>;
+                <abbr ng-hide="result.json.status.rpg" ng-init="isHoverRpg = false" ng-mouseleave="isHoverRpg = false" ng-mouseover="isHoverRpg = true" title="">{{result.json.lastseen.rpg | lastseen:isHoverRpg}}</abbr>;
             </dd>
             <dd>
                 На сервере <b class="apocalyptic">Apocalyptic</b>:
                 <i ng-show="result.json.status.apocalyptic">онлайн</i>
-                <abbr ng-hide="result.json.status.apocalyptic" ng-init="isHoverAp = false" ng-mouseleave="isHoverAp = false" ng-mouseover="isHoverAp = true" title="">{{result.json.lastseen.apocalyptic * 1000 | lastseen:isHoverAp}}</abbr>;
+                <abbr ng-hide="result.json.status.apocalyptic" ng-init="isHoverAp = false" ng-mouseleave="isHoverAp = false" ng-mouseover="isHoverAp = true" title="">{{result.json.lastseen.apocalyptic | lastseen:isHoverAp}}</abbr>;
             </dd>
 
             <dt ng-show="result.json.banned">Находится в бане</dt>

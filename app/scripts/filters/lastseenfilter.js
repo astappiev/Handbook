@@ -13,6 +13,10 @@ angular.module('handbook')
         return function (time, isHover) {
             if(!time) {
                 return 'не посещал(а)';
+            } else if (time.toString().length === 10) {
+                time *= 1000;
+            } else if (time.toString().length !== 13) {
+                return 'неверный формат';
             }
 
             if(isHover) {

@@ -11,9 +11,10 @@ describe('Filter: lastseen', function () {
     lastseenFilter = $filter('lastseen');
   }));
 
-  it('should return the input prefixed with "lastseen filter:"', function () {
-    var text = 'angularjs';
-    expect(lastseenFilter(text)).toBe('lastseen filter: ' + text);
+  it('should return the correct time', function () {
+    var date = 1422114055;
+    expect(lastseenFilter(date, false)).toBe('отсутствует 5 дней');
+    expect(lastseenFilter(date * 1000, false)).toBe('отсутствует 5 дней');
   });
 
 });
