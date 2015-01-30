@@ -1,10 +1,10 @@
 <!doctype html>
-<html ng-app="handbook" lang="ru">
+<html ng-app="handbook" ng-controller="Page" lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>GreenCubes Handbook</title>
+    <title ng-bind="title + ' &mdash; GreenCubes Handbook'"></title>
     <meta name="description" content="Универсальный поиск информации из мира GreenCubes">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/" />
 	<link href="/favicon.png" rel="icon" type="image/png">
 	<link href="/favicon.png" rel="apple-touch-icon" type="image/png">
@@ -23,15 +23,15 @@
         <div class="unit-centered wrapper">
             <header class="units-row units-split">
                 <div class="left">
-                    <a href="/"><img src="/favicon.png"></a>
+                    <a href="/"><img src="/favicon.png" alt="GreenCubes handbook"></a>
                 </div>
                 <div class="right text-right clearfix">
                     <h1><span class="green">Green</span>Cubes Handbook</h1>
                     <nav class="navbar navbar-right">
                         <ul>
-                            <li><a href="!top">Топ 50</a></li>
-                            <li><a href="!help">Помощь</a></li>
-                            <li><a href="!about">О проекте</a></li>
+                            <li><a href="/!top">Топ 50</a></li>
+                            <li><a href="/!help">Помощь</a></li>
+                            <li><a href="/!about">О проекте</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -51,8 +51,6 @@
 
         </div>
     </div>
-
-	<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-48545761-2","auto"),ga("send","pageview");</script>
 
 	<!-- build:js(.) scripts/vendor.js -->
 	<!-- bower:js -->
@@ -79,5 +77,7 @@
     <script src="scripts/services/tradeservice.js"></script>
     <script src="scripts/services/yqlservice.js"></script>
 	<!-- endbuild -->
-</body>
+
+    <script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-48545761-2","auto"),ga("send","pageview");</script>
+  </body>
 </html>

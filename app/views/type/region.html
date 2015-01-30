@@ -1,9 +1,9 @@
-<p class="location"><a href="{{ '/r:' + result.json.name.toLocaleLowerCase() }}">#</a></p>
+<p class="location"><a href="/r:{{ result.json.name.toLocaleLowerCase() }}">#</a></p>
 <section class="units-row card region">
     <h2>{{ result.json.name }}</h2>
     <hr/>
     <div class="units-row end">
-        <p ng-show="result.json.parent">Родительский регион: <span><a href="{{ result.json.parent }}">{{ result.json.parent }}</a></span><br/></p>
+        <p ng-show="result.json.parent">Родительский регион: <span><a href="/r:{{ result.json.parent }}">{{ result.json.parent }}</a></span><br/></p>
 
         <nav class="navbar" ng-init="tabs = 2">
             <ul>

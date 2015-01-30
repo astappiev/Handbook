@@ -1,4 +1,4 @@
-<p class="location"><a href="{{ '/u:' + result.json.username.toLocaleLowerCase() }}">#</a></p>
+<p class="location"><a href="/u:{{ result.json.username.toLocaleLowerCase() }}">#</a></p>
 <section class="units-row card user">
     <div class="left">
         <h2>
@@ -12,6 +12,7 @@
 
             <dt>Последний онлайн</dt>
             <dd>
+
                 На сервере <b class="main">Main</b>:
                 <i ng-show="result.json.status.main">онлайн</i>
                 <abbr ng-hide="result.json.status.main" ng-init="isHoverMain = false" ng-mouseleave="isHoverMain = false" ng-mouseover="isHoverMain = true" title="">{{result.json.lastseen.main | lastseen:isHoverMain}}</abbr>;

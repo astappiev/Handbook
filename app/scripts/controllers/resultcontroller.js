@@ -8,11 +8,12 @@
  * Controller of the handbook
  */
 angular.module('handbook')
-    .controller('Result', function ($scope, $http, $log, $routeParams, $location, apiService, tradeService, yqlService) {
+    .controller('Result', function ($scope, $http, $log, $routeParams, $location, apiService, tradeService, yqlService, $rootScope) {
         $scope.Math = window.Math;
 
         var query = $routeParams.query;
         $scope.$parent.query = query;
+        $rootScope.title = 'Результаты поиска: ' + query;
         query = query.trim().toLocaleLowerCase().replace(',', '.');
 
         $scope.searched = false;
