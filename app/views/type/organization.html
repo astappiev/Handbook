@@ -1,0 +1,13 @@
+<p class="location"><a href="/o:{{ result.json.tag.toLocaleLowerCase() }}">#</a></p>
+<section class="units-row card organization">
+    <h2>{{ result.json.title }}</h2>
+    <hr/>
+    <dl>
+        <dt>Под-название</dt>
+        <dd>{{ result.json.subtitle }}</dd>
+
+        <dt>Тег (Тип организации)</dt>
+        <dd>{{ result.json.tag }}</dd>
+    </dl>
+    <p><a ng-href="{{ result.json.url }} " target="_blank">Ссылка на организацию</a></p>
+</section>

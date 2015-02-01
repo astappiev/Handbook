@@ -40,6 +40,15 @@ angular.module('handbook')
                             $log.error('Пользователь не найден');
                         }
                     );
+                } else if(query.charAt(0) === 'o') {
+                    apiService.getOrganization(query.substr(2)).then(
+                        function(organization) {
+                            $scope.results.push({ json: organization.data, type: 'organization' });
+                        },
+                        function() {
+                            $log.error('Организация не найдена');
+                        }
+                    );
                 } else if(query.charAt(0) === 's') {
                     tradeService.getShop(query.substr(2)).then(
                         function(shop) {
@@ -118,6 +127,15 @@ angular.module('handbook')
                             $log.error('Новости не загружены');
                         }
                     );
+                } else if (query === 'status') {
+                    apiService.getStatus().then(
+                        function (online) {
+                            $scope.results.push({ json: online.data, type: 'status' });
+                        },
+                        function () {
+                            $log.error('Статус сервера не загружен');
+                        }
+                    );
                 }
 
                 if(onlyPage) {
@@ -138,6 +156,14 @@ angular.module('handbook')
                     },
                     function() {
                         $log.error('Регион не найден');
+                    }
+                );
+                apiService.getOrganization(query).then(
+                    function(organization) {
+                        $scope.results.push({ json: organization.data, type: 'organization' });
+                    },
+                    function() {
+                        $log.error('Организация не найдена');
                     }
                 );
                 tradeService.getShop(query).then(

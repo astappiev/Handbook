@@ -24,6 +24,12 @@ angular.module('handbook')
                     data.coordinates.y = Math.abs(data.coordinates.first[1] - data.coordinates.second[1]) + 1;
                     data.coordinates.z = Math.abs(data.coordinates.first[2] - data.coordinates.second[2]) + 1;
                 });
+            },
+            getOrganization: function(organization) {
+                return $http.get('https://api.greencubes.org/organizations/' + organization);
+            },
+            getStatus: function() {
+                return $http.get('https://api.greencubes.org/main/status');
             }
         };
     });

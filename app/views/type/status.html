@@ -1,0 +1,7 @@
+<p class="location"><a href="/!status">#</a></p>
+<section class="nits-row card status">
+    <h2>Статус сервера</h2>
+    <hr/>
+    <h3>{{ result.json.status ? 'Сервер активен' : 'Сервер НЕ активен' }}</h3>
+    <p class="end" ng-show="result.json.status"><a href="/!online"><ng-pluralize count="result.json.online" when="{ 0: 'Никого нет. Зайди и будешь первым!', one: 'На сервере {} игрок.', few: 'На сервере: {} игрока.', many: 'На сервере: {} игроков.', other: 'На сервере: {} игроков.' }"></ng-pluralize></a></p>
+</section>
