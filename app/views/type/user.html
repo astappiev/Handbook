@@ -1,6 +1,6 @@
 <p class="location"><a href="/u:{{ result.json.username.toLocaleLowerCase() }}">#</a></p>
 <section class="units-row card user">
-    <div class="left">
+    <div class="left clearfix">
         <h2>
             <prefix></prefix>
             <span ng-style="{ 'color' : '#{{ result.json.nick_color.slice(-6) }}' }">{{result.json.username}}</span>
@@ -27,6 +27,12 @@
                 <i ng-show="result.json.status.apocalyptic">онлайн</i>
                 <abbr ng-hide="result.json.status.apocalyptic" ng-init="isHoverAp = false" ng-mouseleave="isHoverAp = false" ng-mouseover="isHoverAp = true" title="">{{result.json.lastseen.apocalyptic | lastseen:isHoverAp}}</abbr>;
             </dd>
+
+            <dt ng-show="result.json.badges">Значки пользователя</dt>
+            <dd ng-show="result.json.badges">
+                <span ng-repeat="badge in result.json.badges" class="badge"><img ng-src="{{ 'http://gctrade.ru/images/items/' + badge.badgeId + '.' + badge.badgeData + '.png' }}" /> <var>x</var> {{ badge.count }}</span>
+            </dd>
+            <dd ng-show="result.json.badges">Что бы разместить на форуме используйте <code>[img]http://gctrade.ru/api/user/badges/{{ result.json.username }}[/img]</code></dd>
 
             <dt ng-show="result.json.banned">Находится в бане</dt>
             <dd ng-show="result.json.banned">{{ (result.json.bannedTill) ? 'До ' + (result.json.bannedTill * 1000 | date:'medium') : 'Пожизнено' }}

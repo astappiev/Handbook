@@ -1,5 +1,5 @@
-<p class="location"><a href="/p:{{ result.json.id }}">#</a></p>
-<section class="units-row card price">
+<p class="location"><a href="/g:{{ result.json.id }}">#</a></p>
+<section class="units-row card goods">
     <h2>{{result.json.name}}</h2>
     <hr/>
     <div class="units-row end">
@@ -17,13 +17,13 @@
                 <th>Кол-во</th>
             </tr>
         </thead>
-        <tbody ng-repeat="shop in result.json.in_shop">
+        <tbody ng-repeat="price in result.json.in_shop">
             <tr>
-                <td><img ng-src="{{ shop.shop.logo_url }}" /></td>
-                <td class="name"><a href="{{ shop.shop.shop_url || '#' }}" target="_blank">{{ shop.shop.name }}</a></td>
-                <td>{{ shop.price_sell || '—'}}</td>
-                <td>{{ shop.price_buy || '—' }}</td>
-                <td>{{ shop.stuck }}</td>
+                <td><img ng-src="{{ price.shop.image_url }}" /></td>
+                <td class="name"><a href="{{ price.shop.shop_url || '#' }}" target="_blank">{{ price.shop.name }}</a></td>
+                <td>{{ price.price_sell || '—'}}</td>
+                <td>{{ price.price_buy || '—' }}</td>
+                <td>{{ price.stuck }}</td>
             </tr>
         </tbody>
     </table>

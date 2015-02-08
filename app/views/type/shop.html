@@ -3,14 +3,17 @@
     <h2>{{result.json.name}}</h2>
     <hr/>
 
-    <img ng-src="{{result.json.logo_url}}" align="right" />
+    <img ng-src="{{result.json.image_url}}" align="right" />
     <p>{{ result.json.about }}</p>
     <dl>
+        <dt>Тип</dt>
+        <dd>{{ result.json.type == 1 ? 'Книжный' : 'Обычный' }}</dd>
+
         <dt>Метро</dt>
         <dd>/go {{ result.json.subway }}</dd>
 
-        <dt>Координаты</dt>
-        <dd>{{ result.json.x_cord }}; {{ result.json.z_cord }}</dd>
+        <dt ng-show="result.json.x_cord && result.json.z_cord">Координаты</dt>
+        <dd ng-show="result.json.x_cord && result.json.z_cord">{{ result.json.x_cord }}; {{ result.json.z_cord }}</dd>
     </dl>
 
 </section>

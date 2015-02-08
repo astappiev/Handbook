@@ -10,11 +10,11 @@
 angular.module('handbook')
     .factory('tradeService', function ($http) {
         return {
-            getShop: function(shopname) {
-                return $http.get('http://gctrade.ru/api/shop/' + shopname);
+            getShop: function(alias) {
+                return $http.get('http://gctrade.ru/api/shop/search/' + alias);
             },
-            getPrice: function(item) {
-                return $http.get('http://gctrade.ru/api/price/' + item);
+            getGoods: function(item) {
+                return $http.get('http://gctrade.ru/api/goods/search/' + item);
             }
         };
     });
