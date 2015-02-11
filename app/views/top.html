@@ -5,7 +5,7 @@
         <dt>Топ 50 самых распространенных запросов в Handbook за прошедшие 30 дней.</dt>
         <dd>
             <ul class="list-flat" ng-init="getTop()">
-                <li ng-repeat="result in results"><a href="{{result.page}}">{{result.page}}</a> - {{result.views}}</li>
+                <li ng-repeat="result in results"><a href="{{ result.json[0] }}">{{ result.json[0] }}</a> - {{ result.json[1] }}</li>
             </ul>
         </dd>
     </dl>

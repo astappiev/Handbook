@@ -14,7 +14,7 @@ angular.module('handbook')
                 return $http.get('https://query.yahooapis.com/v1/public/yql/astappev/handbook-gc_media?format=json&callback=');
             },
             getAnalytics: function() {
-                return $http.get('http://ga.gctrade.ru/handbook.php');
+                return $http.get('https://query.yahooapis.com/v1/public/yql/astappev/gcbook-top50?format=json&callback=');
             }
         };
     });

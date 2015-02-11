@@ -16,9 +16,10 @@ angular.module('handbook')
 
             if (!$scope.results) {
                 yqlService.getAnalytics().then(
-                    function(top) {
-                        DataCache.put('top', top.data);
-                        $scope.results = top.data;
+                    function(results) {
+                        var data = results.data.query.results.json.rows;
+                        DataCache.put('top', data);
+                        $scope.results = data;
                     },
                     function() {
                         $log.error('Топ50 не загружен');
