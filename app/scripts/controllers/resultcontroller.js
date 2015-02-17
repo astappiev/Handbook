@@ -8,7 +8,7 @@
  * Controller of the handbook
  */
 angular.module('handbook')
-    .controller('Result', function ($scope, $http, $log, $routeParams, $location, apiService, tradeService, yqlService, $rootScope) {
+    .controller('Result', function ($scope, $http, $log, $routeParams, $location, apiService, tradeService, yqlService, railService, $rootScope) {
         $scope.Math = window.Math;
 
         var query = $routeParams.query;
@@ -127,6 +127,26 @@ angular.module('handbook')
                         },
                         function () {
                             $log.error('Статус сервера не загружен');
+                        }
+                    );
+                } else if (query === 'gcrc') {
+                    railService.getStats(query).then(
+                        function(results) {
+                            results.name = 'GCRC';
+                            $scope.results.push({ json: results, type: 'rail' });
+                        },
+                        function () {
+                            $log.error('Невозможно загрузить информацию о ЖД');
+                        }
+                    );
+                } else if (query === 'metro') {
+                    railService.getStats(query).then(
+                        function(results) {
+                            results.name = 'Метрострой';
+                            $scope.results.push({ json: results, type: 'rail' });
+                        },
+                        function () {
+                            $log.error('Невозможно загрузить информацию о ЖД');
                         }
                     );
                 }

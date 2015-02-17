@@ -1,0 +1,37 @@
+<p class="location"><a href="/!{{ result.json.type }}">#</a></p>
+<section class="units-row card region">
+    <h2>{{ result.json.name }}</h2>
+    <hr/>
+    <dl>
+        <dt>Протяжность магистралей</dt>
+        <dd>{{ result.json.calculated.lenght | number }} блоков</dd>
+
+        <dt>Контрольных блоков</dt>
+        <dd>{{ result.json.calculated.cb_count | number }} кб</dd>
+
+        <dt>Станций</dt>
+        <dd>{{ result.json.calculated.station_count | number }} станций</dd>
+
+        <dt>Кураторов</dt>
+        <dd>{{ result.json.calculated.courators_count | number }} игроков</dd>
+    </dl>
+    <div class="units-row end">
+        <nav class="navbar" ng-init="tabs = 1">
+            <ul>
+                <li ng-class="{'active' : tabs == 0}" ng-click="tabs = 0"><a href="#">Кураторы</a></li>
+                <li ng-class="{'active' : tabs == 1}" ng-click="tabs = 1"><a href="#">Станции</a></li>
+                <li ng-class="{'active' : tabs == 2}" ng-click="tabs = 2"><a href="#">Внутрении подсети</a></li>
+            </ul>
+        </nav>
+
+        <blockquote ng-show="tabs == 0">
+            <p class="inline-list"><span ng-repeat="courator in result.json.calculated.courators_list">{{ courator.name }} ({{ courator.count }})</span></p>
+        </blockquote>
+        <blockquote ng-show="tabs == 1">
+            <p class="inline-list"><span ng-repeat="station in result.json.calculated.station_list">{{ station.name }}</span></p>
+        </blockquote>
+        <blockquote ng-show="tabs == 2">
+            <p class="inline-list"><span ng-repeat="area in result.json.calculated.local_areas">{{ area.name }} ({{ area.count }})</span></p>
+        </blockquote>
+    </div>
+</section>

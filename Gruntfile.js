@@ -9,6 +9,8 @@
 
 module.exports = function (grunt) {
 
+  var pushState = require('grunt-connect-pushstate/lib/utils').pushState;
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -76,6 +78,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              pushState(),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
