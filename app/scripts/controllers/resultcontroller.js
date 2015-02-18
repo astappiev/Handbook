@@ -133,6 +133,7 @@ angular.module('handbook')
                     railService.getStats(query).then(
                         function(results) {
                             results.name = 'GCRC';
+                            results.alias = 'gcrc';
                             $scope.results.push({ json: results, type: 'rail' });
                         },
                         function () {
@@ -143,6 +144,7 @@ angular.module('handbook')
                     railService.getStats(query).then(
                         function(results) {
                             results.name = 'Метрострой';
+                            results.alias = 'metro';
                             $scope.results.push({ json: results, type: 'rail' });
                         },
                         function () {

@@ -43,7 +43,7 @@ angular.module('handbook')
                     return $http.get(data.lines.unfinished);
                 }).then(function(response){
                     data.lines.unfinished = response.data;
-                    data.lines.all = data.lines.base.concat(data.lines.planned, data.lines.barred, data.lines.unfinished);
+                    data.lines.all = data.lines.barred.concat(data.lines.planned, data.lines.base, data.lines.unfinished);
                     return $http.get(data.blocks.cross);
                 }).then(function(response){
                     data.blocks.cross = response.data;
@@ -55,19 +55,21 @@ angular.module('handbook')
                     data.blocks.turn = response.data;
 
                     var i = 0, courators = {};
+
                     function findBlock(findID) {
                         /*jshint camelcase: false */
-                        for (i in data.blocks.turn) {
+                        var i, len;
+                        for (i = 0, len = data.blocks.turn.length; i < len; ++i) {
                             if (data.blocks.turn[i].cb_id === findID) {
                                 return data.blocks.turn[i];
                             }
                         }
-                        for (i in data.blocks.station) {
+                        for (i = 0, len = data.blocks.station.length; i < len; ++i) {
                             if (data.blocks.station[i].cb_id === findID) {
                                 return data.blocks.station[i];
                             }
                         }
-                        for (i in data.blocks.cross) {
+                        for (i = 0, len = data.blocks.cross.length; i < len; ++i) {
                             if (data.blocks.cross[i].cb_id === findID) {
                                 return data.blocks.cross[i];
                             }
@@ -76,9 +78,21 @@ angular.module('handbook')
                         return 0;
                     }
 
+                    function countLineLength() {
+                        var width = 0;
+                        for (var i = 0, len = data.lines.base.length; i < len; ++i) {
+                            var from = findBlock(data.lines.base[i]._from);
+                            var to = findBlock(data.lines.base[i]._to);
+                            if (from !== 0 && to !== 0) {
+                                width += Math.abs(from.x - to.x) + Math.abs(from.z - to.z);
+                            }
+                        }
+                        return width;
+                    }
+
                     function stationOwner() {
                         if (!courators.lenght) {
-                            for (i in data.blocks.station) {
+                            for (var i = 0, len = data.blocks.station.length; i < len; ++i) {
                                 if (data.blocks.station[i].owner !== '') {
                                     if (!courators[data.blocks.station[i].owner]) {
                                         courators[data.blocks.station[i].owner] = 1;
@@ -93,12 +107,11 @@ angular.module('handbook')
                     }
 
                     function couratorsList() {
-                        var courators = stationOwner();
-                        var list = [];
-                        for (i in Object.keys(courators)) {
+                        var courators = stationOwner(), list = [];
+                        for (var i = 0, temp = Object.keys(courators), len = temp.length; i < len; ++i) {
                             list.push({
-                                name: Object.keys(courators)[i],
-                                count: courators[Object.keys(courators)[i]]
+                                name: temp[i],
+                                count: courators[temp[i]]
                             });
                         }
                         return list;
@@ -115,7 +128,7 @@ angular.module('handbook')
                             }
                             return 0;
                         });
-                        for (i in data.blocks.station) {
+                        for (var i = 0, len = data.blocks.station.length; i < len; ++i) {
                             if(data.blocks.station[i].name !== '') {
                                 list.push({ name: data.blocks.station[i].name });
                             }
@@ -124,9 +137,8 @@ angular.module('handbook')
                     }
 
                     function localAreas() {
-                        var list = [];
-                        var local = {};
-                        for (i in data.blocks.station) {
+                        var list = [], local = {}, i, temp, len;
+                        for (i = 0, len = data.blocks.station.length; i < len; ++i) {
                             if (/^[A-Za-z0-9]{1,6}_/gi.test(data.blocks.station[i].name) && !(/^[hnwsre]_/gi.test(data.blocks.station[i].name))) {
                                 if(!local[data.blocks.station[i].name.split('_')[0]]) {
                                     local[data.blocks.station[i].name.split('_')[0]] = 1;
@@ -135,27 +147,19 @@ angular.module('handbook')
                                 }
                             }
                         }
-                        for (i in Object.keys(local)) {
-                            if(local[Object.keys(local)[i]] > 1) {
+                        for (i = 0, temp = Object.keys(local), len = temp.length; i < len; ++i) {
+                            if(local[temp[i]] > 1) {
                                 list.push({
-                                    name: Object.keys(local)[i],
-                                    count: local[Object.keys(local)[i]]
+                                    name: temp[i],
+                                    count: local[temp[i]]
                                 });
                             }
                         }
                         return list;
                     }
 
-                    var width = 0;
-                    for (i in data.lines.base) {
-                        var from = findBlock(data.lines.base[i]._from);
-                        var to = findBlock(data.lines.base[i]._to);
-                        if (from !== 0 && to !== 0) {
-                            width += (Math.abs(from.x - to.x) + Math.abs(from.z - to.z));
-                        }
-                    }
                     /*jshint camelcase: false */
-                    data.calculated.lenght = width;
+                    data.calculated.lenght = countLineLength();
                     data.calculated.cb_count = data.blocks.station.length + data.blocks.cross.length;
                     data.calculated.courators_count = Object.keys(stationOwner()).length;
                     data.calculated.station_count = data.blocks.station.length;
