@@ -1,6 +1,6 @@
 {
   "name": "handbook",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "dependencies": {
     "grunt-connect-rewrite": "~0.2.1"
   },

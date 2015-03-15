@@ -54,7 +54,7 @@ angular.module('handbook')
                 }).then(function(response){
                     data.blocks.turn = response.data;
 
-                    var i = 0, courators = {};
+                    var courators = {};
 
                     function findBlock(findID) {
                         /*jshint camelcase: false */
